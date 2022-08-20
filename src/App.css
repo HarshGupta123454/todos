@@ -4,22 +4,39 @@
   padding: 0;
 
 }
-body{
+/* body{
   background-color: #9C9EFE;
   
-}
+} */
 .welcome{
   
   width: 100%;
   height: 100vh;
-  background: linear-gradient(122.19deg, #da2079 1.89% , #2a00d5 113.56%);
+  background-image: url("./back.png");
+  background-size: cover;
  
+}
+.div{
+  width: 30%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  height: 45%;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background: rgba(225, 225, 225, 0.1);
+  backdrop-filter: blur(5px);
+}
+.icon{
+  color:white;
+}
+
+.webutton{
+  width: 38%;
+  
 }
 
 
-.con{
-   
-  width: 28%;
+.inpp{
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 
@@ -38,7 +55,13 @@ input {
   font-size: 20px;
   font-weight: 800;
   color: white;
+  width: 70%;
 }
+
+::placeholder{
+  color: white;
+}
+
 
 
 button {
@@ -69,27 +92,52 @@ button:hover{
 
 /* home page */
 
+.back{
+  background-image: url("./background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+ 
+
+}
+
 .main{
   height:100%;
   width: 100%;
-  background-color: #9C9EFE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
 
+}
+
+.glass {
+  height: 650px;
+  width: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background: rgba(225, 225, 225, 0.1);
+  backdrop-filter: blur(5px);
+  box-sizing: border-box;
 }
 
 .add {
   display: flex;
+  
+  
   justify-content: center;
-  padding: 10px;
-  margin: 10px;
+  margin: 19px 0px;
 }
 
 #addinp {
+  width: fit-content;
+
   
-  margin-right: 22px;
-  font-size: 24px;
-  font-weight: 900;
-  color: white;
-  border: transparent;
+
+}
+.sc{
+  z-index: 999;
 }
 
 
@@ -110,16 +158,35 @@ button:hover{
 }
 
 
-.cd{
-  background-color: #A6D1E6;
-  
+.cd {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  margin: 5px 0;
+  padding: 8px;
+}
+.otdoo{
+  display: inline-block;
 }
 
+.ico {
+  color: white;
+  padding: 0 6px;
+  margin: 7px;
+}
+
+.todoo {
+  color: white;
+  width: max-content;
+  font-size: 18px;
+}
 
 
 .buts{
   display: flex;
-  justify-content: space-around;
+  
 }
 
 
@@ -139,11 +206,21 @@ button:hover{
   color: white !important;
 }
 
-#signout{
+#signout {
   width: auto;
-  margin: 30px;
+  margin-left: 32%;
+  position: fixed;
+  margin-top: -4%;
+  /* float: left; */
+  border: none;
+  width: 36px;
+  /* left: 30px; */
 }
 
+#addinp{
+  width: 250px;
+  margin-right: 8px;
+}
 
 .text-center {
   text-align: center!important;
@@ -152,7 +229,24 @@ button:hover{
 
 
 
-@media (max-width :1100px){
+@media (max-width :1200px) and (min-width :580px){
+
+  .welcome{
+    background-image: url("./mobile.png"); 
+  }
+  .div{
+    width: 80%;
+  }
+  .webutton {
+    width: 45%;
+    font-size: 18px;
+    height: 34px;
+}
+  input {
+    font-size: 20px;
+    font-weight: 400;
+}
+ 
 
 
     button {
@@ -161,8 +255,9 @@ button:hover{
   }
 
   #h1 {
- 
-    font-size: 19px;
+    font-size: 32px;
+    margin-bottom: 22px;
+    font-weight: 900;
 }
 
 #addinp {
@@ -176,13 +271,20 @@ button:hover{
 
 #addinp {
   margin-right: 5px;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 900;
   color: white;
   border: transparent;
-  width: 134px;
+  width: 169px;
+  border-bottom: 1px solid white;
 }
-
+.todoo {
+ 
+  font-size: 14px;
+}
+.ico{
+  font-size: 18px;
+}
 
 .cardbot {
   width: 38%;
@@ -198,7 +300,142 @@ button:hover{
 .welbut{
   width: 87%;
 }
+.conform {
+  width: 84%;
+  font-size: 16px;
+  margin-left: 29px;
+}
+.ico {
+  color: white;
+  padding: 0 6px;
+  margin: 2px;
+  font-size: 14px !important;
+  width: auto;
+}
+
+.buts {
+  display: flex;
+  flex-direction: column;
+}
   
+.io{
+  border: none;
+}
+
+.glass{
+  height: 60%;
+  width: 90%;
+}
+
+#signout {
+  width: auto;
+  margin-left: 46%;
+  margin-top: -471px;
+}
 
  
+}
+
+@media (max-width :580px) {
+  .welcome{
+    background-image: url("./mobile.png"); 
+  }
+  .div{
+    width: 80%;
+  }
+  .webutton {
+    width: 45%;
+    font-size: 18px;
+    height: 34px;
+}
+  input {
+    font-size: 20px;
+    font-weight: 400;
+}
+ 
+
+
+    button {
+      width: 245%;
+      font-size: 19px;
+  }
+
+  #h1 {
+    font-size: 32px;
+    margin-bottom: 22px;
+    font-weight: 900;
+}
+
+#addinp {
+
+  width: 150px;
+}
+
+.conform {
+  width: 100%;
+}
+
+#addinp {
+  margin-right: 5px;
+  font-size: 18px;
+  font-weight: 900;
+  color: white;
+  border: transparent;
+  width: 169px;
+  border-bottom: 1px solid white;
+}
+.todoo {
+ 
+  font-size: 14px;
+}
+.ico{
+  font-size: 18px;
+}
+
+.cardbot {
+  width: 38%;
+  font: 16px;
+}
+
+.todotext {
+
+  font-size: 18px;
+}
+
+
+.welbut{
+  width: 87%;
+}
+.conform {
+  width: 84%;
+  font-size: 16px;
+  margin-left: 29px;
+}
+.ico {
+  color: white;
+  padding: 0 6px;
+  margin: 2px;
+  font-size: 14px !important;
+  width: auto;
+}
+
+.buts {
+  display: flex;
+  flex-direction: column;
+}
+  
+.io{
+  border: none;
+}
+
+.glass {
+  height: 77%;
+  width: 90%;
+}
+
+#signout {
+  width: auto;
+  margin-left: 34%;
+  margin-top: -44%;
+}
 }

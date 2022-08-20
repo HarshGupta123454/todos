@@ -4,6 +4,7 @@ import { auth } from './Firebase';
 import { useNavigate } from 'react-router-dom';
 
 
+
 export default function Welcome() {
     const [email, setemail] = useState("");
     const [password, setpassword] = useState("");
@@ -20,8 +21,8 @@ export default function Welcome() {
 
 
     const handleregister = () =>{
-        if ((registerinfo.email !== registerinfo.conformEmail) || (registerinfo.password !== registerinfo.conformPassword)) {
-            alert("please conform that your email and password is same ")
+        if ( (registerinfo.password !== registerinfo.conformPassword)) {
+            alert("please conform that your  password is same ")
             return
             
         }
@@ -32,7 +33,7 @@ export default function Welcome() {
 
 
     useEffect(() => {
-        console.log("hua")
+        
         auth.onAuthStateChanged((user) => {
             console.log(user)
             if (user) {
@@ -71,11 +72,12 @@ export default function Welcome() {
         
 
 
-            <div className=" welcome d-flex justify-content-center text-center">
+            <div className="welcome d-flex justify-content-center align-items-center">
 
-                <div className="con container d-flex flex-column justify-content-center text-align-center text-center">
+                
                     
-                <div className="log d-flex flex-column ">
+                <div className="div d-flex flex-column justify-content-center align-items-center">
+                
                 <h1 id='h1'>Todo-List</h1>
 
                 
@@ -83,24 +85,23 @@ export default function Welcome() {
                     {isregister ? (
                         <>
                             <input type="email" placeholder='enter your email here' onChange={(e)=> {setregisterinfo({...registerinfo,email : e.target.value})}} value={registerinfo.email} />
-                            <input type="email" placeholder='enter your email again' onChange={(e)=> {setregisterinfo({...registerinfo,conformEmail : e.target.value})}} value={registerinfo.conformEmail} />
-                            <input type="text" placeholder='enter password here' onChange={(e)=> {setregisterinfo({...registerinfo,password : e.target.value})}} value={registerinfo.password} />
-                            <input type="text" placeholder='enter password again' onChange={(e)=> {setregisterinfo({...registerinfo,conformPassword : e.target.value})}} value={registerinfo.conformPassword} />
+                            <input type="password" placeholder='enter password here' onChange={(e)=> {setregisterinfo({...registerinfo,password : e.target.value})}} value={registerinfo.password} />
+                            <input type="password" placeholder='enter password again' onChange={(e)=> {setregisterinfo({...registerinfo,conformPassword : e.target.value})}} value={registerinfo.conformPassword} />
 
-                            <button className='welbut' onClick={handleregister}>Register</button>
-                            <button className='welbut' onClick={() => setisregister(false)}> Go back</button>
+                            <button className='webutton' onClick={handleregister}>Register</button>
+                            <button className='webutton' onClick={() => setisregister(false)}> Go back</button>
                         </>
                     ) : (<>
                         <input type="email" placeholder='enter your email here' onChange={emai} value={email} />
-                        <input type="text" placeholder='enter password here' onChange={pass} value={password} />
+                        <input type="password" placeholder='enter password here' onChange={pass} value={password} />
 
-                        <button className='welbut' onClick={sign}>Sign in</button>
-                        <button className='welbut' onClick={() => setisregister(true)}> Create an account</button>
+                        <button className='webutton' onClick={sign}>Sign in</button>
+                        <button className='webutton' onClick={() => setisregister(true)}> Create account</button>
 
                     </>)}
 
                 </div>
-                </div>
+                
             </div>
 
 

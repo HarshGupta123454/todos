@@ -5,6 +5,9 @@ import { auth, db } from './Firebase'
 import { useNavigate } from 'react-router-dom'
 import { uid } from "uid"
 import { set, ref, onValue, remove, update } from 'firebase/database'
+import { AiFillDelete } from "react-icons/ai";
+import { GoSignOut } from "react-icons/go";
+import { Scrollbars } from "react-custom-scrollbars-2"
 
 
 export default function Homepage() {
@@ -88,49 +91,60 @@ export default function Homepage() {
     return (
         <>
 
+            <div className='back' >
 
 
-            <div className="main row">
-            <button id='signout' onClick={signout}>signout</button>
-                <div className="col-8 mx-auto mt-5 text-center">
+                <div className="main">
 
-                    <div className="add">
-                        <input id='addinp' type="text" placeholder='Addtodo...' value={todo} onChange={(e) => { settodo(e.target.value) }} />
-                        <div className="b">
-                        {isup ?
-                            <button className='conform'  onClick={handledit}>conform </button> : <button className='conform' onClick={writetodatabase}>Add</button>
+                    <div className="glass">
+                        
 
-                        }
-                        </div>
+                            <div className="add">
+                                <input autoComplete='off' id='addinp' type="text" placeholder='Add todo...' value={todo} onChange={(e) => { settodo(e.target.value) }} />
+                                <div className="b">
+                                    {isup ?
+                                        <button className='conform' onClick={handledit}>conform </button> : <button className='conform' onClick={writetodatabase}>Add</button>
+
+                                    }
+                                    <button id='signout' onClick={signout}><GoSignOut /></button>
+
+                                </div>
+
+                            </div>
+
+
+
+                    
+                        <Scrollbars style={{height : "86%"}}>
+                            {todos.map((tod) => {
+                                return (
+                                    <>
+                                        <div className='row'>
+                                            <div className="cd col-10 mx-auto">
+                                                <h1 className='todoo'>{tod.todo}</h1>
+                                                <div className="buts">
+                                                    <button className='ico' onClick={() => handleupdate(tod)}>update</button>
+                                                    <button className='ico io' onClick={() => handledelete(tod.uidd)}><AiFillDelete /></button>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </>
+                                )
+
+                            })}
+
+                        </Scrollbars>
+
 
                     </div>
-
-
-                    {todos.map((tod) => {
-                        return (
-                            <>
-                            <div className="cd card my-3">
-                                <div className="card-body text-center">
-                                <h1 className='todotext'>{tod.todo}</h1>
-                                <div className="buts">
-                                <button className='cardbot' onClick={() => handleupdate(tod)}>update</button>
-                                <button className='cardbot'onClick={() => handledelete(tod.uidd)}>delete</button>
-                                </div>
-                                </div>
-                            </div>
-                            </>
-                        )
-
-                    })}
-                   
-                    
-
                 </div>
 
 
             </div>
 
-            
+
 
         </>
     )

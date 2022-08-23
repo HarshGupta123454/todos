@@ -104,11 +104,6 @@ export default function Homepage() {
                 uidd: uid
             })
             
-        } else {
-            update(ref(db, `${auth.currentUser.uid}/${uid}`), {
-                comp: "uncheck",
-                uidd: uid
-            })
         }
     }
 

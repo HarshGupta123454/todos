@@ -151,7 +151,59 @@ button:hover{
   border: transparent;
 }
 
+#input {
+  height: 14px;
+  width: 16px;
+  margin-right: 3px;
+  background: transparent;
+}
 
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+
+
+
+/* On mouse-over, add a grey background color */
+.container:hover input~.checkmark {
+  background:transparent;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked~.checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
 
 .cardbot{
   width: 17%;
@@ -176,11 +228,21 @@ button:hover{
   padding: 0 6px;
   margin: 7px;
 }
-
+.icoo{
+  display: none;
+}
 .todoo {
   color: white;
   width: max-content;
   font-size: 18px;
+}
+.todoos {
+  color: white;
+  width: max-content;
+  font-size: 18px;
+  padding: 7px;
+  padding-top: 7px;
+  text-decoration: line-through;
 }
 
 
@@ -279,9 +341,12 @@ button:hover{
   border-bottom: 1px solid white;
 }
 .todoo {
- 
   font-size: 14px;
 }
+.todoos {
+  font-size: 14px;
+}
+
 .ico{
   font-size: 18px;
 }
@@ -332,12 +397,135 @@ button:hover{
   margin-left: 46%;
   margin-top: -471px;
 }
-
+#input {
+  height: 10px;
+  width: 16px;
+  margin-right: 3px;
+  background: transparent;
+}
  
 }
 
 @media (max-width :580px) {
   .welcome{
+    background-image: url("./mobile.png"); 
+  }
+  .div{
+    width: 80%;
+  }
+  .webutton {
+    width: 45%;
+    font-size: 18px;
+    height: 34px;
+}
+  input {
+    font-size: 20px;
+    font-weight: 400;
+}
+ 
+#input {
+  height: 15px;
+  width: 16px;
+  margin-right: 3px;
+  margin-bottom: 0px;
+  background: transparent;
+}
+
+
+    button {
+      width: 245%;
+      font-size: 19px;
+  }
+
+  #h1 {
+    font-size: 32px;
+    margin-bottom: 22px;
+    font-weight: 900;
+}
+
+#addinp {
+
+  width: 150px;
+}
+
+.conform {
+  width: 100%;
+}
+
+#addinp {
+  margin-right: 5px;
+  font-size: 18px;
+  font-weight: 900;
+  color: white;
+  border: transparent;
+  width: 169px;
+  border-bottom: 1px solid white;
+}
+.todoo {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+.todoos {
+ 
+  font-size: 14px;
+}
+.ico{
+  font-size: 18px;
+}
+
+.cardbot {
+  width: 38%;
+  font: 16px;
+}
+
+.todotext {
+
+  font-size: 18px;
+}
+
+
+.welbut{
+  width: 87%;
+}
+.conform {
+  width: 84%;
+  font-size: 16px;
+  margin-left: 29px;
+}
+.ico {
+  color: white;
+  padding: 0 6px;
+  margin: 2px;
+  font-size: 14px !important;
+  width: auto;
+}
+
+.buts {
+  display: flex;
+  flex-direction: column;
+}
+  
+.io{
+  border: none;
+}
+
+.glass {
+  height: 77%;
+  width: 90%;
+}
+
+#signout {
+  width: auto;
+  margin-left: 34%;
+  margin-top: -44%;
+}
+}
+
+
+@media (max-height : 350px) {
+  .welcome{
+    height: 200vh;
     background-image: url("./mobile.png"); 
   }
   .div{

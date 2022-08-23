@@ -19,6 +19,10 @@ export default function Homepage() {
     const [isup, setisup] = useState(false)
     //uid toupdate
     const [tempuid, settempuid] = useState("")
+    //loading
+    const [loading, setloading] = useState(false)
+    
+    const[ind , setind] =useState()
 
     const navigate = useNavigate()
 
@@ -58,7 +62,8 @@ export default function Homepage() {
         const uidd = uid();
         set(ref(db, `${auth.currentUser.uid}/${uidd}`), {
             todo: todo,
-            uidd: uidd
+            uidd: uidd,
+            comp: "uncheck"
         })
 
         settodo("")
@@ -77,6 +82,7 @@ export default function Homepage() {
         settempuid(todo.uidd)
     }
 
+    //to edit something in your list
     const handledit = () => {
         update(ref(db, `/${auth.currentUser.uid}/${tempuid}`), {
             todo: todo,
@@ -86,6 +92,26 @@ export default function Homepage() {
         settodo("")
         setisup(false)
     }
+
+    //to add mark as complete 
+    const checkclk = (uid,index) => {
+        setind(todos[index].comp)
+        console.log(todos[index].comp)
+        
+        if (todos[index].comp === "uncheck") {
+            update(ref(db, `${auth.currentUser.uid}/${uid}`), {
+                comp: "checked",
+                uidd: uid
+            })
+            
+        } else {
+            update(ref(db, `${auth.currentUser.uid}/${uid}`), {
+                comp: "uncheck",
+                uidd: uid
+            })
+        }
+    }
+
 
 
     return (
@@ -97,39 +123,42 @@ export default function Homepage() {
                 <div className="main">
 
                     <div className="glass">
-                        
 
-                            <div className="add">
-                                <input autoComplete='off' id='addinp' type="text" placeholder='Add todo...' value={todo} onChange={(e) => { settodo(e.target.value) }} />
-                                <div className="b">
-                                    {isup ?
-                                        <button className='conform' onClick={handledit}>conform </button> : <button className='conform' onClick={writetodatabase}>Add</button>
 
-                                    }
-                                    <button id='signout' onClick={signout}><GoSignOut /></button>
+                        <div className="add">
+                            <input autoComplete='off' id='addinp' type="text" placeholder='Add todo...' value={todo} onChange={(e) => { settodo(e.target.value) }} />
+                            <div className="b">
+                                {isup ?
+                                    <button className='conform' onClick={handledit}>conform </button> : <button className='conform' onClick={writetodatabase}>Add</button>
 
-                                </div>
+                                }
+                                <button id='signout' onClick={signout}><GoSignOut /></button>
 
                             </div>
 
+                        </div>
 
 
-                    
-                        <Scrollbars style={{height : "86%"}}>
-                            {todos.map((tod) => {
+
+
+                        <Scrollbars style={{ height: "86%" }}>
+                            {todos.map((tod, index) => {
+
+                            
                                 return (
                                     <>
-                                        <div className='row'>
+                                        <div  className='row'>
                                             <div className="cd col-10 mx-auto">
-                                                <h1 className='todoo'>{tod.todo}</h1>
+                                                <h1 className={tod.comp === "uncheck"? "todoo":"todoos"} > <input onClick={() => checkclk(tod.uidd,index)} id="input" title="mark as completed" type="checkbox" checked={tod.comp === "uncheck"? false:true} />
+                                                    <span className="checkmark"></span>{tod.todo}</h1>
                                                 <div className="buts">
-                                                    <button className='ico' onClick={() => handleupdate(tod)}>update</button>
+                                                    <button className={tod.comp === "uncheck"? "ico":"icoo"} onClick={() => handleupdate(tod)}>update</button>
                                                     <button className='ico io' onClick={() => handledelete(tod.uidd)}><AiFillDelete /></button>
 
 
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> 
                                     </>
                                 )
 
